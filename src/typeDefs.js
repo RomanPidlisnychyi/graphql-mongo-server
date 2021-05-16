@@ -3,7 +3,8 @@ const { gql } = require('apollo-server');
 module.exports.typeDefs = gql`
   type Query {
     articles: [Article!]!
-    themes: [Theme!]!
+    sections(articleId: String!): [Section!]!
+    themes(name: String!): [Theme!]!
   }
   type Mutation {
     createArticle(name: String!): Article!

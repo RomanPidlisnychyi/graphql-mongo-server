@@ -5,7 +5,8 @@ const { Theme } = require('./models/Theme');
 module.exports.resolvers = {
   Query: {
     articles: async () => await Article.find(),
-    themes: async () => await Theme.find(),
+    sections: async (_, { articleId }) => await Section.find({ articleId }),
+    themes: async (_, { name }) => await Theme.find({ name }),
   },
   Mutation: {
     createArticle: async (_, { name }) => await Article.create({ name }),
